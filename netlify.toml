@@ -1,0 +1,44 @@
+# Netlify Configuration for All About Money Marketing Site
+
+[build]
+  # No build command needed for static HTML
+  publish = "."
+
+# Redirect www to non-www (or vice versa)
+[[redirects]]
+  from = "https://www.allaboutmoney.app/*"
+  to = "https://allaboutmoney.app/:splat"
+  status = 301
+  force = true
+
+# Handle form submissions (Netlify Forms alternative)
+# Uncomment if using Netlify Forms instead of Formspree
+# [[redirects]]
+#   from = "/success"
+#   to = "/thanks.html"
+#   status = 200
+
+# Security Headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "accelerometer=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"
+
+# Cache static assets
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/Fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
