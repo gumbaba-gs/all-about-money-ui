@@ -319,6 +319,76 @@ img {
 }
 
 /* ============================================
+   MOBILE NAVIGATION
+   ============================================ */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: var(--spacing-sm);
+    z-index: 1001;
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--text-primary);
+    margin: 5px 0;
+    border-radius: 2px;
+    transition: all var(--transition-base);
+}
+
+.nav-toggle-active .nav-toggle-bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle-active .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle-active .nav-toggle-bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .header-nav-wrapper {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        box-shadow: var(--shadow-md);
+        padding: var(--spacing-md) 0;
+    }
+
+    .header-nav-wrapper.nav-open {
+        display: block;
+    }
+
+    .header-nav {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .header-nav-link {
+        display: block;
+        padding: var(--spacing-md) var(--spacing-lg);
+        border-radius: 0;
+    }
+
+    .header-nav-link:hover {
+        background-color: var(--gray-100);
+    }
+}
+
+/* ============================================
    HERO SECTION
    ============================================ */
 .hero {
@@ -388,6 +458,7 @@ img {
 .phone-mockup {
     position: relative;
     max-width: 320px;
+    width: 100%;
 }
 
 .phone-chassis {
@@ -398,10 +469,13 @@ img {
 
 .phone-video {
     position: absolute;
-    top: 12px;
+    top: 2.5%;
+    bottom: 2.5%;
     left: 50%;
     transform: translateX(-50%);
     width: 88%;
+    height: 95%;
+    object-fit: cover;
     border-radius: 30px;
     z-index: 1;
 }
@@ -569,6 +643,8 @@ img {
 
 .about-image {
     width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
 }
@@ -698,6 +774,10 @@ img {
 
     .hero {
         padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .phone-mockup {
+        max-width: 240px;
     }
 
     .hero-title {

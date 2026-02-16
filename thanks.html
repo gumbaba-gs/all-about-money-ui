@@ -7,6 +7,9 @@
     <meta name="robots" content="noindex">
     <title>Thank You - All About Money Alpha</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -20,7 +23,12 @@
             <a href="index.html" class="header-logo-link" aria-label="All About Money Home">
                 <img class="header-logo" src="images/keycloak-logo-text.png" alt="All About Money">
             </a>
-            <nav aria-label="Main navigation">
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="header-nav-wrapper" aria-label="Main navigation">
                 <ul class="header-nav">
                     <li><a href="index.html#features" class="header-nav-link">Features</a></li>
                     <li><a href="index.html#about" class="header-nav-link">About</a></li>
@@ -39,7 +47,7 @@
                 </div>
                 <h1 class="hero-title" style="font-size: 42px;">You're on the List!</h1>
                 <p class="hero-subtitle" style="font-size: 1.25rem; margin-bottom: var(--spacing-xl);">
-                    Thank you for signing up for the All About Money Alpha Program.
+                    Thank you for joining the All About Money Alpha waitlist.
                 </p>
 
                 <div class="alpha-incentive-box" style="text-align: center;">
@@ -47,9 +55,10 @@
                         <strong>What happens next?</strong>
                     </p>
                     <ul style="list-style: none; padding: 0; margin-top: var(--spacing-md); text-align: left; display: inline-block;">
-                        <li style="margin: var(--spacing-sm) 0;">1. We're launching alpha in <strong>February 2026</strong></li>
-                        <li style="margin: var(--spacing-sm) 0;">2. You'll receive an invite code via email</li>
-                        <li style="margin: var(--spacing-sm) 0;">3. You'll get <strong>lifetime 50% off</strong> any premium plan</li>
+                        <li style="margin: var(--spacing-sm) 0;">1. Check your inbox and <strong>confirm your email</strong></li>
+                        <li style="margin: var(--spacing-sm) 0;">2. Alpha is <strong>now open</strong> — invites going out in batches</li>
+                        <li style="margin: var(--spacing-sm) 0;">3. You'll receive an invite code via email</li>
+                        <li style="margin: var(--spacing-sm) 0;">4. You'll get <strong>lifetime 50% off</strong> any premium plan</li>
                     </ul>
                 </div>
 
@@ -76,12 +85,32 @@
             </div>
             <nav aria-label="Footer navigation">
                 <ul class="footer-nav">
-                    <li><a href="#" class="footer-link">Privacy</a></li>
-                    <li><a href="#" class="footer-link">Terms</a></li>
-                    <li><a href="#" class="footer-link">Help</a></li>
+                    <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms</a></li>
+                    <li><a href="mailto:hello@silveroakapps.com" class="footer-link">Help</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
+
+    <script>
+    (function() {
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.header-nav-wrapper');
+        if (!toggle || !nav) return;
+        toggle.addEventListener('click', function() {
+            var open = nav.classList.toggle('nav-open');
+            toggle.classList.toggle('nav-toggle-active', open);
+            toggle.setAttribute('aria-expanded', open);
+        });
+        nav.addEventListener('click', function(e) {
+            if (e.target.classList.contains('header-nav-link')) {
+                nav.classList.remove('nav-open');
+                toggle.classList.remove('nav-toggle-active');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    })();
+    </script>
 </body>
 </html>

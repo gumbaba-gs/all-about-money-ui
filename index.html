@@ -21,6 +21,9 @@
     <meta name="twitter:description" content="Join the All About Money Alpha Program - Track crypto & stocks in one app. Sign up now for lifetime 50% off!">
     <meta name="twitter:image" content="https://allaboutmoney.app/images/og-image.png">
 
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
     <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
@@ -34,7 +37,12 @@
             <a href="#" class="header-logo-link" aria-label="All About Money Home">
                 <img class="header-logo" src="images/keycloak-logo-text.png" alt="All About Money">
             </a>
-            <nav aria-label="Main navigation">
+            <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <nav class="header-nav-wrapper" aria-label="Main navigation">
                 <ul class="header-nav">
                     <li><a href="#features" class="header-nav-link">Features</a></li>
                     <li><a href="#about" class="header-nav-link">About</a></li>
@@ -54,17 +62,17 @@
                     Track global markets, sync portfolios automatically, and make informed decisions with real-time insights.
                 </p>
                 <div class="hero-cta">
-                    <a href="#alpha-signup" class="btn btn-primary">Join Alpha Waitlist</a>
+                    <a href="#alpha-signup" class="btn btn-primary">Join Alpha</a>
                     <a href="#features" class="btn btn-secondary">Learn More</a>
                 </div>
                 <p class="hero-alpha-badge">
-                    🚀 Alpha launching February 2026 &bull; Limited spots available
+                    🚀 Alpha now open &bull; Limited spots available
                 </p>
             </div>
             <div class="hero-media">
                 <div class="phone-mockup">
                     <img class="phone-chassis" src="images/iphone-x.png" alt="All About Money app on iPhone">
-                    <video class="phone-video" height="575" playsinline autoplay loop muted aria-label="App demo video">
+                    <video class="phone-video" playsinline autoplay loop muted aria-label="App demo video">
                         <source src="images/video.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
@@ -241,13 +249,14 @@
                 </p>
             </div>
 
-            <!-- Email Signup Form -->
-            <form class="alpha-form">
+            <!-- Email Signup Form — Waitlister embed replaces this once configured -->
+            <form class="alpha-form" id="alpha-form" action="https://waitlister.me/api/submit" method="POST">
+                <input type="hidden" name="waitlist" value="YOUR_WAITLIST_ID">
                 <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address">
                 <button type="submit" class="btn btn-primary">Get Early Access</button>
             </form>
             <p class="form-disclaimer">
-                We'll email you when alpha spots open up. No spam, ever.
+                We'll verify your email and notify you when alpha spots open. No spam, ever.
             </p>
 
             <!-- Feature Bullets -->
@@ -283,15 +292,32 @@
             </div>
             <nav aria-label="Footer navigation">
                 <ul class="footer-nav">
-                    <li><a href="#" class="footer-link">Privacy</a></li>
-                    <li><a href="#" class="footer-link">Terms</a></li>
-                    <li><a href="#" class="footer-link">Help</a></li>
+                    <li><a href="privacy.html" class="footer-link">Privacy</a></li>
+                    <li><a href="terms.html" class="footer-link">Terms</a></li>
+                    <li><a href="mailto:hello@silveroakapps.com" class="footer-link">Help</a></li>
                 </ul>
             </nav>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/signup.js"></script>
+    <script>
+    (function() {
+        var toggle = document.querySelector('.nav-toggle');
+        var nav = document.querySelector('.header-nav-wrapper');
+        if (!toggle || !nav) return;
+        toggle.addEventListener('click', function() {
+            var open = nav.classList.toggle('nav-open');
+            toggle.classList.toggle('nav-toggle-active', open);
+            toggle.setAttribute('aria-expanded', open);
+        });
+        nav.addEventListener('click', function(e) {
+            if (e.target.classList.contains('header-nav-link')) {
+                nav.classList.remove('nav-open');
+                toggle.classList.remove('nav-toggle-active');
+                toggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    })();
+    </script>
 </body>
 </html>
