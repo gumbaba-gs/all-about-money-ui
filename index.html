@@ -249,9 +249,8 @@
                 </p>
             </div>
 
-            <!-- Email Signup Form — Waitlister embed replaces this once configured -->
-            <form class="alpha-form" id="alpha-form" action="https://waitlister.me/api/submit" method="POST">
-                <input type="hidden" name="waitlist" value="YOUR_WAITLIST_ID">
+            <!-- Email Signup Form — Netlify Forms -->
+            <form class="alpha-form" name="alpha-waitlist" method="POST" data-netlify="true" action="/thanks.html">
                 <input type="email" name="email" placeholder="Enter your email" required aria-label="Email address">
                 <button type="submit" class="btn btn-primary">Get Early Access</button>
             </form>
