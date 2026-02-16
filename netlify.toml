@@ -6,8 +6,8 @@
 
 # Redirect www to non-www (or vice versa)
 [[redirects]]
-  from = "https://www.allaboutmoney.app/*"
-  to = "https://allaboutmoney.app/:splat"
+  from = "https://www.allaboutmoney.io/*"
+  to = "https://allaboutmoney.io/:splat"
   status = 301
   force = true
 
